@@ -27,6 +27,7 @@ class ProgrammingLanguage {
         // Initialize the form's Submit button to run the lexer
         this._formButton.innerHTML = 'Run lexer';
         this._formButton.onclick = () => { this._runLexer(); };
+        console.log("Hello")
     }
 
 

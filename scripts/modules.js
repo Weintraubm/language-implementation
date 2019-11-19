@@ -8,3 +8,4 @@ export * from "./OutputStatement.js";
 export * from "./Expression.js";
 export * from "./IdentifierExpression.js";
 export * from "./NumberExpression.js";
+export * from "./ArithmeticExpression.js";

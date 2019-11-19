@@ -1,4 +1,4 @@
-import { Lexeme, IdentifierExpression, NumberExpression } from "./modules.js";
+import { Lexeme, IdentifierExpression, NumberExpression, ArithmeticExpression } from "./modules.js";
 
 /**
  * Implements the <code>&lt;expression&gt;</code> nonterminal symbol from our grammar.
@@ -24,6 +24,9 @@ class Expression {
         }
         else if (lexeme.checkToken(Lexeme.tokens.number)) {
             expression = new NumberExpression();
+        }
+        else if (lexeme.checkToken(Lexeme.tokens.addition_operator)) {
+            expression = new ArithmeticExpression();
         }
         else {
             throw new Error('Expected an expression instead of "' + lexeme.source + '".');
