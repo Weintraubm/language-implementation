@@ -65,8 +65,21 @@ class ArithmeticExpression extends Expression {
      * @returns The value of this expression.
      * @public
      */
-    interpret() {
-        return Number(this.source);
+    interpret(symbolTable) {
+        let value = this.operand1.interpret(symbolTable);
+        let value2 = this.operand2.interpret(symbolTable)
+
+        if (this.operator === "+")
+          return new Number(value + value2);
+        
+        else if (this.operator === "-")
+          return new Number(value - value2);
+        
+        else if (this.operator === "@")
+          return new Number(value * value2);
+        
+        else if (this.operator === "%") 
+          return new Number (value / value2);
     }
 
     /**
@@ -75,8 +88,11 @@ class ArithmeticExpression extends Expression {
      * @returns {string} Assembly code for this nonterminal's parse tree.
      * @public
      */
-    compile() {
-        return this.source;
+    compile(symbolTable) {
+      return `
+        mov edx, ${this.operand1.compile(symbolTable)}
+        mov eax, ${this.operand2.compile(symbolTable)}
+        add eax, edx `
     }
 }
 
