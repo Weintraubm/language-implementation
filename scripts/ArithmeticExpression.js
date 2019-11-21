@@ -15,7 +15,7 @@ class ArithmeticExpression extends Expression {
          * @public
          */
         this.operand1;
-        this.operand2:
+        this.operand2;
         this.operator;
     }
 
@@ -44,12 +44,15 @@ class ArithmeticExpression extends Expression {
      * @public
      */
     getParseTreeAsHtml() {
-        return `&lt;expression&gt;
+        return `&lt;arithmetic_expression&gt;
             <ul>
-                <li>&lt;number&gt;
+                <li>${this.operator} 
                     <ul>
                         <li>
-                            ${this.source}
+                           ${this.operand1.getParseTreeAsHtml()}
+                        </li>
+                        <li>
+                           ${this.operand2.getParseTreeAsHtml()}
                         </li>
                     </ul>
                 </li>
